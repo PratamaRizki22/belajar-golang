@@ -13,3 +13,5 @@ func main() {
 		fmt.Printf("index %v, value %v\n", i, v)
 	}
 }
+
+//kkoko tampan
