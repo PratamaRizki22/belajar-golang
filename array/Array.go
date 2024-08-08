@@ -43,4 +43,8 @@ func main() {
 	fmt.Println("lama: ", makanan)
 	fmt.Println("variable baru: ", beliBaru)
 
+	makan, ok := indonesia[0], indonesia[2]
+	fmt.Println(makan)
+	fmt.Println(ok)
+
 }
