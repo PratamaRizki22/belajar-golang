@@ -14,6 +14,6 @@
 %f: Menampilkan angka desimal (untuk tipe floating point).
 %e: Menampilkan angka dalam notasi ilmiah (huruf kecil).
 %E: Menampilkan angka dalam notasi ilmiah (huruf besar).
-%s: Menampilkan string.
+%s: Menampilkan string. tet jooko
 %q: Menampilkan string yang dikutip.
 %p: Menampilkan pointer (alamat memori).
