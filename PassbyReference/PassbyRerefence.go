@@ -15,7 +15,7 @@ func main() {
 	// - `changeMe` menggunakan pointer ini untuk mengubah nilai asli dari variabel `name`.
 }
 
-// koko
+// koko jiji
 func changeMe(name *string) {
 	*name = "koko" // Mengubah nilai asli yang ditunjuk oleh pointer `name` menjadi "koko"
 }
