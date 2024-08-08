@@ -4,7 +4,7 @@
 
 
 ## verb
-%v: Menampilkan nilai dalam format default.
+%v: Menampilkan nilai dalam format default. ./
 %T: Menampilkan tipe dari nilai.
 %d: Menampilkan angka desimal (untuk tipe integer).
 %b: Menampilkan angka dalam format biner.
