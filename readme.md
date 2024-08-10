@@ -5,7 +5,11 @@
 4. 
 
 ## hal penting yang harus dipejari
-goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ), struct pointer, interface, constuctor(go tidak punya buat manual), pointer function, new pointer, rune, multitrade, chanel, chanel buffer, heap & stack, stack gorutine, garbage colection, escape heap, no escape?, curency= multitrading?, pararellism, goroutines vs thread?, asyncronus, 
+goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ), struct pointer, interface, constuctor(go tidak punya buat manual), pointer function, new pointer, rune, multitrade, chanel, chanel buffer, heap & stack, stack gorutine, garbage colection, escape heap, no escape?, curency= multitrading?, pararellism, goroutines vs thread?, asyncronus, itoa, atoi
+- Goroutine
+- Channel, Blocking Channel, Buffered Size Channel
+- Range dan Channel Closing
+- Select dan Default Selection
 
 
 ## verb
