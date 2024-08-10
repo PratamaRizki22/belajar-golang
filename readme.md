@@ -26,3 +26,16 @@ goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ),
 
 ## new vs make
 ![alt text](image.png)
+
+## Go Lang Passing By Value
+
+Ingat, Go secara default menggunakan **passing by value**, artinya perubahan apapun terhadap variabel asli tidak berpengaruh apapun dan hanya dianggap salinan, 
+
+<span style="color:red">KECUALI PAKAI POINTER!!!!!</span>
+
+##### * dibaca pointer ke .... 
+contoh: *int dibaca pointer ke int, *intPtr dibaca pointer ke variabel intPtr
+
+##### & dibaca alamaat dari
+contoh: &employee dibaca alamat dari employee
+  
