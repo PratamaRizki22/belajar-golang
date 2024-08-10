@@ -10,7 +10,7 @@ goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ),
 - Channel, Blocking Channel, Buffered Size Channel
 - Range dan Channel Closing
 - Select dan Default Selection
-
+---
 
 ## verb
 %v: Menampilkan nilai dalam format default. ./
