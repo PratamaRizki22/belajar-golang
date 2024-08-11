@@ -2,7 +2,9 @@
 1. LEARN GOLANG AND PYTHON QUICKLY CODING FOR BEGINNERS WITH HANDS ON PROJECTS BY J J TAM
 2. chatgpt
 3. [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://www.youtube.com/watch?v=ZMZpH4yT7M0)
-4. 
+4. [Belajar golang concurrency gampang](https://www.youtube.com/watch?v=fHxCpoF88Qg)
+5. 
+
 
 ## hal penting yang harus dipejari
 goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ), struct pointer, interface, constuctor(go tidak punya buat manual), pointer function, new pointer, rune, multitrade, chanel, chanel buffer, heap & stack, stack gorutine, garbage colection, escape heap, no escape?, curency= multitrading?, pararellism, goroutines vs thread?, asyncronus, itoa, atoi
@@ -10,7 +12,11 @@ goroutin dan sinkronisasi, pointer(Constant Pointer VS. Pointer To A Constant ),
 - Channel, Blocking Channel, Buffered Size Channel
 - Range dan Channel Closing
 - Select dan Default Selection
----
+- asyc await?
+- deadlock?
+- race condition
+- time management: time.Sleep, sync.WaitGroup
+- thread lebih ringan => goroutine
 
 ## verb
 %v: Menampilkan nilai dalam format default. ./
