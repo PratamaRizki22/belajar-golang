@@ -2,19 +2,23 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strconv"
 )
 
+// Struct untuk menyimpan informasi kontak
 type Contact struct {
-	ID    int
-	Name  string
-	Phone string
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
+	Phone string `json:"phone"`
 }
 
-var contacts []Contact
 var lastID int
+
+const fileName = "contacts.json"
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
@@ -34,82 +38,79 @@ func main() {
 		switch option {
 		case "1":
 			createContact(scanner)
-
 		case "2":
-			ReadContacts()
-
+			readContacts()
 		case "3":
-			updateContacts(scanner)
-
+			updateContact(scanner)
 		case "4":
 			deleteContact(scanner)
-
 		case "5":
-			fmt.Println("exiting...")
+			fmt.Println("Exiting...")
 			return
-
 		default:
-			fmt.Println("invalid option")
+			fmt.Println("Invalid option. Please select again.")
 		}
-
 	}
 }
 
 func createContact(scanner *bufio.Scanner) {
-	lastID++
-	fmt.Println("enter name: ")
+	lastID = getLastID() + 1
+	fmt.Print("Enter Name: ")
 	scanner.Scan()
 	name := scanner.Text()
 
-	fmt.Println("Enter phone number: ")
+	fmt.Print("Enter Phone: ")
 	scanner.Scan()
 	phone := scanner.Text()
 
 	contact := Contact{ID: lastID, Name: name, Phone: phone}
-	contacts = append(contacts, contact)
+	saveContact(contact)
 
-	fmt.Println("contact added successfully !")
+	fmt.Println("Contact added successfully!")
 }
 
-func ReadContacts() {
-	fmt.Println("\n-- Contact List --")
+func readContacts() {
+	contacts := loadContacts()
+	fmt.Println("\n--- Contact List ---")
 	for _, contact := range contacts {
-		fmt.Printf("ID: %d \n Name: %s \n Phone: %s \n", contact.ID, contact.Name, contact.Phone)
+		fmt.Printf("ID: %d, Name: %s, Phone: %s\n", contact.ID, contact.Name, contact.Phone)
 	}
 }
 
-func updateContacts(scanner *bufio.Scanner) {
-	fmt.Print("Enter id will update: ")
+func updateContact(scanner *bufio.Scanner) {
+	contacts := loadContacts()
+	fmt.Print("Enter the ID of the contact to update: ")
 	scanner.Scan()
 	id, err := strconv.Atoi(scanner.Text())
 	if err != nil {
-		fmt.Println("invalid id")
+		fmt.Println("Invalid ID")
 		return
 	}
 
 	for i, contact := range contacts {
 		if contact.ID == id {
-			fmt.Print("NewName: ")
+			fmt.Print("Enter new Name: ")
 			scanner.Scan()
 			name := scanner.Text()
 
-			fmt.Print("New Phone: ")
+			fmt.Print("Enter new Phone: ")
 			scanner.Scan()
 			phone := scanner.Text()
 
 			contacts[i].Name = name
 			contacts[i].Phone = phone
+			saveContactsToFile(contacts)
 
-			fmt.Println("update successfully")
+			fmt.Println("Contact updated successfully!")
 			return
-
 		}
 	}
 
-	fmt.Println("contact not found")
+	fmt.Println("Contact not found.")
 }
 
 func deleteContact(scanner *bufio.Scanner) {
+	contacts := loadContacts()
 	fmt.Print("Enter the ID of the contact to delete: ")
 	scanner.Scan()
 	id, err := strconv.Atoi(scanner.Text())
@@ -121,10 +122,61 @@ func deleteContact(scanner *bufio.Scanner) {
 	for i, contact := range contacts {
 		if contact.ID == id {
 			contacts = append(contacts[:i], contacts[i+1:]...)
+			saveContactsToFile(contacts)
 			fmt.Println("Contact deleted successfully!")
 			return
 		}
 	}
 
 	fmt.Println("Contact not found.")
+}
+
+func saveContact(contact Contact) {
+	contacts := loadContacts()
+	contacts = append(contacts, contact)
+	saveContactsToFile(contacts)
+}
+
+func saveContactsToFile(contacts []Contact) {
+	data, err := json.Marshal(contacts)
+	if err != nil {
+		fmt.Println("Error saving contacts:", err)
+		return
+	}
+
+	err = ioutil.WriteFile(fileName, data, 0644)
+	if err != nil {
+		fmt.Println("Error writing to file:", err)
+	}
+}
+
+func loadContacts() []Contact {
+	data, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return []Contact{} // Return empty slice if file does not exist
+		}
+		fmt.Println("Error loading contacts:", err)
+		return []Contact{}
+	}
+
+	var contacts []Contact
+	err = json.Unmarshal(data, &contacts)
+	if err != nil {
+		fmt.Println("Error parsing contacts:", err)
+		return []Contact{}
+	}
+
+	return contacts
+}
+
+func getLastID() int {
+	contacts := loadContacts()
+	lastID := 0
+	for _, contact := range contacts {
+		if contact.ID > lastID {
+			lastID = contact.ID
+		}
+	}
+	return lastID
 }
