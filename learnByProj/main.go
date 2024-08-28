@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	crudgo "lernGo/crudGo"
+	"lernGo/crudGo"
 	"os"
 )
 
