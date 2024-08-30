@@ -3,7 +3,7 @@
 2. chatgpt
 3. [Understanding Allocations: the Stack and the Heap - GopherCon SG 2019](https://www.youtube.com/watch?v=ZMZpH4yT7M0)
 4. [Belajar golang concurrency gampang](https://www.youtube.com/watch?v=fHxCpoF88Qg)
-5. 
+5. go for devpos
 
 
 ## hal penting yang harus dipejari
